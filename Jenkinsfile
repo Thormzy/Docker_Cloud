@@ -2,9 +2,9 @@ pipeline {
   agent any
 
   environment {
-       imagename = "thormzy/docker-cloud"
-       registryCredential = 'DockerHub'
-       dockerImage = ''
+    imagename = "thormzy/docker-cloud"
+    registryCredential = 'DockerHub'
+    dockerImage = ''
   }
 
   stages {
@@ -12,9 +12,9 @@ pipeline {
     stage('Install Docker') {
       steps {
         sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-        sh 'sudo sh get-docker.sh'
-        sh 'sudo usermod -aG docker jenkins'
-        sh 'sudo systemctl start docker'
+        sh 'echo <password> | sudo -S sh get-docker.sh'
+        sh 'echo <password> | sudo -S usermod -aG docker jenkins'
+        sh 'echo <password> | sudo -S systemctl start docker'
       }
     }
 
