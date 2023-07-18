@@ -18,6 +18,15 @@ pipeline {
       }
     }
 
+    stage('Restart Jenkins') {
+      steps {
+        script {
+          // Restart Jenkins
+          Jenkins.instance.restart()
+        }
+      }
+    }
+
     stage ('Build') {
       steps {
         sh 'mvn clean package'
